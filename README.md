@@ -37,7 +37,7 @@ Most times, unless you’re combining multiple browser extensions or using a pai
 
 - IDE: <a href = "https://developer.android.com/studio"> Android Studio</a>
 - Version Control: Git (see powerpoint)
-- <a href = "[https://www.geeksforgeeks.org/android-studio-setup-for-flutter-development/](https://nodejs.org/en)"> Node.js
+- <a href = "https://nodejs.org/en/download"> Node.js
 - <a href = "https://react.dev/learn/installation"> React </a>
 
 
