@@ -113,4 +113,7 @@ Some basic ones:
 | git pull origin "branch" | Pull updates from a specific branch | 
 
 # Developers
-### Roles TBD
+- Srishti Kannan
+- Sravya Kotamraju
+- Rishna Renikunta
+- Alex Tang
