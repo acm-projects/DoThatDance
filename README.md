@@ -102,7 +102,7 @@ Master cheatsheet: https://www.atlassian.com/dam/jcr:8132028b-024f-4b6b-953e-e68
 Some basic ones:
 | Command | Description |
 | --- | --- |
-| cd "Rooomies" | Change directories to our repository |
+| cd "DoThatDance" | Change directories to our repository |
 | git branch | Lists branches for you |
 | git branch "branch name" |  Makes a new branch |
 | git checkout "branch name" | Switch to branch |
