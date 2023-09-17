@@ -35,7 +35,7 @@ Most times, unless you’re combining multiple browser extensions or using a pai
 
 # Things to Install
 
-- IDE: <a href = "[https://developer.android.com/studio](https://code.visualstudio.com/download)"> Visual Studio Code</a>
+- IDE: <a href = "https://code.visualstudio.com/download"> Visual Studio Code</a>
 - Version Control: Git (see powerpoint)
 - <a href = "https://nodejs.org/en/download"> Node.js
 - <a href = "https://react.dev/learn/installation"> React </a>
