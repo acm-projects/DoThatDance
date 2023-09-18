@@ -14,12 +14,12 @@ Most times, unless you’re combining multiple browser extensions or using a pai
 - Loop specified portions of the video
 - Save timestamps
 - Make the video fullscreen
+- User authentication 
 
 # Stretch Goals
 
 - Keyboard shortcuts
 - Homescreen
-- User authentication 
 - Post comments (tips, explanations, reactions, etc) by timestamp
 - Save most recently viewed videos
 - Let users rank videos by difficulty
