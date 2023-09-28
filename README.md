@@ -19,6 +19,7 @@ Most times, unless you’re combining multiple browser extensions or using a pai
 # Stretch Goals
 
 - Keyboard shortcuts
+- Notes at each timestamp
 - Homescreen
 - Post comments (tips, explanations, reactions, etc) by timestamp
 - Save most recently viewed videos
