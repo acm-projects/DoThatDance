@@ -13,14 +13,14 @@ Most times, unless you’re combining multiple browser extensions or using a pai
 - Slowdown or speed up the video
 - Loop specified portions of the video
 - Save timestamps
-- Make the video fullscreen
+- Homescreen
 - User authentication 
 
 # Stretch Goals
 
 - Keyboard shortcuts
 - Notes at each timestamp
-- Homescreen
+- Make the video fullscreen
 - Post comments (tips, explanations, reactions, etc) by timestamp
 - Save most recently viewed videos
 - Let users rank videos by difficulty
@@ -32,7 +32,7 @@ Most times, unless you’re combining multiple browser extensions or using a pai
   - Figma
   - React
 - Backend
-  - MongoDB
+  - Firebase
 
 # Things to Install
 
@@ -94,8 +94,11 @@ Most times, unless you’re combining multiple browser extensions or using a pai
 
 # Competition
 - Mirrorthevideo.com
-- YouTube's built in features
+  - Mirrors the whole youtube page, which make it hard to read UI like timestamps for speed changing
+- YouTube's built-in features
+  - Can't mirror the video
 - Looper (Google Chrome extension for YouTube)
+  - Can't mirror the video or change the speed of it
 
 # Github CheatSheet!
 Master cheatsheet: https://www.atlassian.com/dam/jcr:8132028b-024f-4b6b-953e-e68fcce0c5fa/atlassian-git-cheatsheet.pdf
@@ -114,7 +117,11 @@ Some basic ones:
 | git pull origin "branch" | Pull updates from a specific branch | 
 
 # Developers
-- Srishti Kannan
-- Sravya Kotamraju
-- Rishna Renikunta
+
+Back-end:
 - Alex Tang
+- Sravya Kotamraju
+Front-end:
+- Srishti Kannan
+- Rishna Renikunta
+
