@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import { db } from "../firebase";
+import { collection, setDoc, doc } from "firebase/firestore";
 
 const Register = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const usersCollectionRef = collection(db, "users");
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +20,9 @@ const Register = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        setDoc(doc(db, "users", user.uid), {email: user.email, history: []});
         console.log(user);
+        console.log(user.email);
         console.log("Registration Successful");
         navigate("/login");
         // ...
