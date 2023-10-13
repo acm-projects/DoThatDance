@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { SAMLAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+{/*import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
-import {faCircleUser} from '@fortawesome/free-solid-svg-icons';
+import {faCircleUser} from '@fortawesome/free-solid-svg-icons';*/}
 
 const Login = () => {
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ const Login = () => {
       <div className="container1">
       <div className="userIconContainer userIcon">
         {/* <FontAwesomeIcon className="user" icon={faUser} style={{color: "#ffffff",}} /> */}
-        <FontAwesomeIcon className="user" icon={faCircleUser} style={{color: "#2B5BB0",}} />
+        {/*<FontAwesomeIcon className="user" icon={faCircleUser} style={{color: "#2B5BB0",}} />*/}
       </div>
       <div className="formDiv">
         <form>
