@@ -6,7 +6,7 @@ import { auth } from "../firebase";
 const Register = () => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState("");
 
   const onSubmit = async (e) => {
@@ -31,10 +31,31 @@ const Register = () => {
 
   return (
       <section>
-          <div className="formDiv">
-            <h1> User Registration </h1>
+          <nav className="nav">
+       {/* <div className="logo">
+              <img src="logo.png"/>
+        </div>  */}
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a>|</a>
+          </li>
+          <li>
+            <a href="/Login">Login</a>
+          </li>
+          <li>
+            <a>|</a>
+          </li>
+          <li className="active">
+            <a href="/Register">Sign Up</a>
+          </li>
+        </ul>
+      </nav>
+          <div className ="formDiv changePadding">
             <form>
-              <div>
+              <div className="input">
                 <label htmlFor="email-address">Email address</label>
                 <input
                   type="email"
@@ -45,8 +66,7 @@ const Register = () => {
                   placeholder="Email"
                 />
               </div>
-
-              <div>
+              <div className="input">
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
@@ -57,13 +77,25 @@ const Register = () => {
                   placeholder="Password"
                 />
               </div>
-
-              <button type="submit" onClick={onSubmit}>
-                Sign up
-              </button>
+              <div className="input">
+                <label htmlFor="reconfirm">Reconfirm Password</label>
+                <input
+                  type="password"
+                  label="Create password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  placeholder="Reconfirm Password"
+                />
+              </div>
+              <div class="centerButton">
+                <button className="login" type="submit" onClick={onSubmit}>
+                  Sign up
+                </button>
+              </div>
             </form>
             <p>
-              Already have an account? <NavLink to="/login">Sign in</NavLink>
+              Already Have An Account? <NavLink to="/login">LOGIN</NavLink>
             </p>
           </div>
       </section>

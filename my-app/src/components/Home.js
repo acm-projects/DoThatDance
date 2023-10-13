@@ -21,13 +21,41 @@ const Home = () => {
 
   return (
     <>
-      <nav>
-        <p>Welcome Home</p>
-
-        <div>
-          <button onClick={handleLogout}>Logout</button>
+        <nav className = "nav">
+          {/* <div className="logo">
+              <img src="logo.png"/>
+          </div> */}
+          <ul>
+            <li className="active">
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a>|</a>
+            </li>
+            <li>
+              <a href="/Login">Login</a>
+            </li>
+            <li>
+              <a>|</a>
+            </li>
+            <li>
+              <a href="/register">Sign Up</a>
+            </li>
+          </ul>
+        </nav>
+      <div className="body">
+      <div className="container">
+        <div className="title">
+          <h1>Welcome to DoThatDance!</h1>
         </div>
-      </nav>
+        <h2>Your personal dance assistant</h2>
+        <input placeholder="ENTER YOUTUBE LINK HERE"/>
+        <button className="go">Go</button>
+      </div>
+      </div>
+      {/* <div>
+          <button onClick={handleLogout}>Logout</button>
+      </div> */}
     </>
   );
 };
