@@ -3,7 +3,7 @@ import { signOut } from "firebase/auth";
 import { db, auth } from "../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
 import { doc, updateDoc, getDoc} from "firebase/firestore";
-
+import pngeggnew from '../pngeggnew.png';
 const Home = () => {
 
   const [videoLink, setVideoLink] = useState("");
@@ -50,21 +50,12 @@ const Home = () => {
   return (
     <>
       <nav className = "nav">
-        {/* <div className="logo">
-              <img src="logo.png"/>
-          </div> */}
           <ul>
             <li className="active">
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <a>|</a>
-            </li>
-            <li>
               <NavLink to="/login">Login</NavLink>
-            </li>
-            <li>
-              <a>|</a>
             </li>
             <li>
               <NavLink to="/register">Sign Up</NavLink>
@@ -74,26 +65,29 @@ const Home = () => {
           <button onClick={handleLogout}>Logout</button>
           </div> */}
       </nav>
+      <img className="design" src={pngeggnew}/>
       <div className="body">
           <div className="container">
-            <div className="title">
-              <h1>Welcome to DoThatDance!</h1>
-            </div>
+            <h1>Welcome to DoThatDance!</h1>
             <h2>Your personal dance assistant</h2>
+            <div className="link">
             <input 
             id="youtube-link"
             name="youtube-link"
             type="url" 
-            placeholder="Youtube Link" 
+            placeholder="ENTER YOUTUBE LINK HERE" 
             required
             ref={inputRef}
             onChange={(e) => setVideoLink(e.target.value)}
           />
+          <div className="goDiv">
           <button 
           className = "go"
           onClick={!user ? userNotLoggedIn : () => handleYoutubeLink(user.uid, videoLink)}>
-            Submit
+            Go
           </button>
+          </div>
+          </div>
           </div>
       </div>
     </>

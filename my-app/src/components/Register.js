@@ -36,29 +36,21 @@ const Register = () => {
   };
 
   return (
-      <section>
+      <>
           <nav className="nav">
-       {/* <div className="logo">
-              <img src="logo.png"/>
-        </div>  */}
         <ul>
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <a>|</a>
-          </li>
-          <li>
             <NavLink to="/login">Login</NavLink>
-          </li>
-          <li>
-            <a>|</a>
           </li>
           <li className="active">
             <NavLink to="/register">Sign Up</NavLink>
           </li>
         </ul>
       </nav>
+      <div className="container1">
           <div className ="formDiv changePadding">
             <form>
               <div className="input">
@@ -69,7 +61,7 @@ const Register = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  placeholder="Email"
+                  // placeholder="Email"
                 />
               </div>
               <div className="input">
@@ -80,7 +72,7 @@ const Register = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  placeholder="Password"
+                  // placeholder="Password"
                 />
               </div>
               <div className="input">
@@ -91,7 +83,7 @@ const Register = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  placeholder="Reconfirm Password"
+                  // placeholder="Reconfirm Password"
                 />
               </div>
               <div class="centerButton">
@@ -104,7 +96,8 @@ const Register = () => {
               Already Have An Account? <NavLink to="/login">LOGIN</NavLink>
             </p>
           </div>
-      </section>
+      </div>
+      </>
   );
 };
 

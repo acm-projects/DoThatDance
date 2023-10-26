@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import { SAMLAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
-{/*import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faUser} from '@fortawesome/free-solid-svg-icons';
-import {faCircleUser} from '@fortawesome/free-solid-svg-icons';*/}
-
+import {RiUser6Line} from "react-icons/ri";
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
@@ -29,20 +26,14 @@ const Login = () => {
   };
 
   return (
-    <section>
+    <>
        <nav className="nav">
         <ul>
           <li>
             <a href="/">Home</a>
           </li>
-          <li>
-            <a>|</a>
-          </li>
           <li className="active">
             <a href="/Login">Login</a>
-          </li>
-          <li>
-            <a>|</a>
           </li>
           <li>
             <a href="/register">Sign Up</a>
@@ -50,10 +41,8 @@ const Login = () => {
         </ul>
       </nav>
       <div className="container1">
-      <div className="userIconContainer userIcon">
-        {/* <FontAwesomeIcon className="user" icon={faUser} style={{color: "#ffffff",}} /> */}
-        {/*<FontAwesomeIcon className="user" icon={faCircleUser} style={{color: "#2B5BB0",}} />*/}
-      </div>
+        <div className="iconGradient"></div>
+        <RiUser6Line className="user"></RiUser6Line>
       <div className="formDiv">
         <form>
           <div className="input">
@@ -63,7 +52,7 @@ const Login = () => {
               name="email"
               type= "email"
               required
-              placeholder="Email"
+              // placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -75,7 +64,7 @@ const Login = () => {
               name="password"
               type="password"
               required
-              placeholder="Password"
+              // placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
@@ -88,7 +77,7 @@ const Login = () => {
         </p>
       </div> 
       </div>
-    </section>
+    </>
   );
 };
 
