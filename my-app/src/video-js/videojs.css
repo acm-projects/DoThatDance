@@ -1,0 +1,20 @@
+.playerWrapper{
+    height: 100%;
+    width: 100%;
+}
+
+.customVideoPlayer{
+    padding-top: 300px;
+    color: black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-color: black;
+}
+
+  
+
+
+  
+  
+

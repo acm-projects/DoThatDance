@@ -1,23 +1,17 @@
-import React from "react";
-import Home from "./components/Home";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import { BrowserRouter as Router } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
+import React from 'react';
+import './App.css';
+import VideoJSPlayerComponent from './video-js/videojs';
+import 'video.js/dist/video-js.css';
+import { BrowserRouter as Router, Routes, Route }
+	from 'react-router-dom';
+import "videojs-playbackrate-adjuster";
+import "videojs-mirror";
 
 function App() {
   return (
-    <Router>
-      <div>
-        <section>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </section>
-      </div>
-    </Router>
+    <div className="App">
+      <VideoJSPlayerComponent/>
+    </div>
   );
 }
 
