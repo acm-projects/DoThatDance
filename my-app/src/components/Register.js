@@ -4,6 +4,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { db } from "../firebase";
 import { collection, setDoc, doc } from "firebase/firestore";
+import { Link } from 'react-router-dom';
+import Authentication from "./Authentication";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ const Register = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        setDoc(doc(db, "users", user.uid), {email: user.email, history: []});
+        setDoc(doc(db, "users", user.uid), { email: user.email, history: [] });
         console.log(user);
         console.log(user.email);
         console.log("Registration Successful");
@@ -36,69 +38,65 @@ const Register = () => {
   };
 
   return (
-      <>
-          <nav className="nav">
+    <>
+      <nav className="nav">
         <ul>
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          <li>
-            <NavLink to="/login">Login</NavLink>
-          </li>
-          <li className="active">
-            <NavLink to="/register">Sign Up</NavLink>
-          </li>
+          <Authentication />
         </ul>
       </nav>
-      <div className="container1">
-          <div className ="formDiv changePadding">
-            <form>
-              <div className="input">
-                <label htmlFor="email-address">Email address</label>
-                <input
-                  type="email"
-                  label="Email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  // placeholder="Email"
-                />
-              </div>
-              <div className="input">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  label="Create password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  // placeholder="Password"
-                />
-              </div>
-              <div className="input">
-                <label htmlFor="reconfirm">Reconfirm Password</label>
-                <input
-                  type="password"
-                  label="Create password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  // placeholder="Reconfirm Password"
-                />
-              </div>
-              <div class="centerButton">
-                <button className="login" type="submit" onClick={onSubmit}>
-                  Sign up
-                </button>
-              </div>
-            </form>
-            <p>
-              Already Have An Account? <NavLink to="/login">LOGIN</NavLink>
-            </p>
-          </div>
+      <div className="container1 fade-in">
+        <div className="formDiv changePadding">
+          <form>
+            <div className="input">
+              <label htmlFor="email-address">Email address</label>
+              <input
+                type="email"
+                label="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              // placeholder="Email"
+              />
+            </div>
+            <div className="input">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                label="Create password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              // placeholder="Password"
+              />
+            </div>
+            <div className="input">
+              <label htmlFor="reconfirm">Reconfirm Password</label>
+              <input
+                type="password"
+                label="Create password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              // placeholder="Reconfirm Password"
+              />
+            </div>
+            <div class="centerButton">
+              <button onClick={onSubmit} className="login" type="submit" >
+                Sign up
+              </button>
+            </div>
+          </form>
+          <p>
+            Already Have An Account? <NavLink to="/login">LOGIN</NavLink>
+          </p>
+        </div>
       </div>
-      </>
+    </>
   );
 };
+
 
 export default Register;
