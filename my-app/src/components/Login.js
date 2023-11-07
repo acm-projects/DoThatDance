@@ -6,6 +6,7 @@ import { RiUser6Line } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Authentication from "./Authentication";
+import Video from "../Video";
 
 const Login = () => {
   const navigate = useNavigate();

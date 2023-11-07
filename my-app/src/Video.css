@@ -1,0 +1,135 @@
+.video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust the height as needed */
+  position: relative;
+}
+
+.dance-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px; /* Increase the top margin to 200px or your desired value */
+  margin-bottom: 100px; /* Increase the bottom margin to 200px or your desired value */
+  position: relative;
+}
+
+.dancer {
+  max-width: 90%; /* Adjust the maximum width as needed */
+  max-height: 60%; /* Adjust the maximum height as needed */
+}
+
+.rectangle {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  height: 50px; /* Adjust the height of the grey rectangle as needed */
+  background-color: #7B797980; /* Hex color with 50% opacity */
+}
+
+.white-rectangle {
+  position: absolute;
+  bottom: 80px; /* Adjust the positioning as needed */
+  width: 87%; /* Adjust the width of the white rectangle as needed */
+  height: 10px; /* Adjust the height of the white rectangle as needed */
+  background-color: white;
+  border-radius: 5px; /* Adjust the border radius for rounded corners */
+}
+
+.white-rectangle::before {
+  content: '';
+  position: absolute;
+  top: 0px; /* Adjust the distance from the top as needed */
+  left: 0;
+  width: 25%; /* Adjust the width as needed (1/4 of the rectangle) */
+  height: 10px; /* Adjust the height as needed */
+  background-color: #FA89CC; /* Hex color #FA89CC */
+  border-radius: 5px; /* Adjust the border radius as needed to create rounded corners */
+}
+
+.star-button {
+  position: absolute;
+  top: 10px; /* Adjust the positioning from the top */
+  right: 70px; /* Adjust the positioning from the right */
+  width: 30px; /* Adjust the width of the star image */
+  height: 30px; /* Adjust the height of the star image */
+}
+
+.play-button {
+  position: absolute;
+  top: 680px; /* Adjust the positioning from the top to place it on top of the grey rectangle */
+  left: 8%; /* Adjust the positioning from the left */
+  transform: translateX(-50%); /* Center the play button horizontally */
+  width: 30px; /* Adjust the width of the play button */
+  height: 30px; /* Adjust the height of the play button */
+  z-index: 1; /* Ensure the play button is above other elements */
+}
+
+.volume-button {
+  position: absolute;
+  top: 680px; /* Adjust the positioning from the top to place it on top of the grey rectangle */
+  left: 12%; /* Adjust the positioning from the left */
+  transform: translateX(-50%); /* Center the play button horizontally */
+  width: 30px; /* Adjust the width of the play button */
+  height: 30px; /* Adjust the height of the play button */
+  z-index: 1; /* Ensure the play button is above other elements */
+}
+
+.mirror-button {
+  position: absolute;
+  top: 680px; /* Adjust the positioning from the top to place it on top of the grey rectangle */
+  left: 81%; /* Adjust the positioning from the left */
+  transform: translateX(-50%); /* Center the play button horizontally */
+  width: 30px; /* Adjust the width of the play button */
+  height: 30px; /* Adjust the height of the play button */
+  z-index: 1; /* Ensure the play button is above other elements */
+}
+
+.fullscreen-button {
+  position: absolute;
+  top: 680px; /* Adjust the positioning from the top */
+  right: 70px; /* Adjust the positioning from the right */
+  width: 30px; /* Adjust the width of the star image */
+  height: 30px; /* Adjust the height of the star image */
+  z-index: 1; /* Ensure the play button is above other elements */
+}
+
+.playback-button {
+  position: absolute;
+  top: 677px; /* Adjust the positioning from the top */
+  right: 110px; /* Adjust the positioning from the right */
+  width: 40px; /* Adjust the width of the star image */
+  height: 40px; /* Adjust the height of the star image */
+  z-index: 1; /* Ensure the play button is above other elements */
+}
+
+.loop-button {
+  position: absolute;
+  top: 676px; /* Adjust the positioning from the top to place it on top of the grey rectangle */
+  left: 85%; /* Adjust the positioning from the left */
+  transform: translateX(-50%); /* Center the play button horizontally */
+  width: 40px; /* Adjust the width of the play button */
+  height: 40px; /* Adjust the height of the play button */
+  z-index: 1; /* Ensure the play button is above other elements */
+  object-fit: contain; /* Ensure the image fits within the dimensions of the button */
+}
+
+.text-overlay {
+  color: black; /* Adjust the color as needed */
+  font-size: 16px; /* Adjust the font size as needed */
+  font-weight: bold; /* Make the text bold */
+  position: absolute;
+  top: 15px; /* Adjust the top position as needed */
+  right: 890px; /* Adjust the right position as needed */
+}
+
+.pause-display {
+  position: absolute;
+  right:50%; /* Adjust the positioning from the top to place it on top of the grey rectangle */
+  left:50%; /* Adjust the positioning from the left */
+  transform: translateX(-50%); /* Center the play button horizontally */
+  width: 70px; /* Adjust the width of the play button */
+  height: 70px; /* Adjust the height of the play button */
+  z-index: 1; /* Ensure the play button is above other elements */
+}
