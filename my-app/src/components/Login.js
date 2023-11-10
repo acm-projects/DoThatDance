@@ -6,7 +6,7 @@ import { RiUser6Line } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Authentication from "./Authentication";
-import Video from "../Video";
+import Video from "../video";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -84,7 +84,7 @@ const Login = () => {
             <div class="centerButton">
               <button onMouseLeave={handleHover}
                 onClick={onLogin}
-                onMouseEnter={handleHover} style={buttonStyle} className="login"
+                onMouseEnter={handleHover} className="login button-transition"
               >Login</button>
             </div>
           </form>

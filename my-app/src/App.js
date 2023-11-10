@@ -3,7 +3,7 @@ import Home from "./components/Home";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
-import Video from "./Video";
+import Video from "./video";
 import DashboardPage from "./DashboardPage";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";

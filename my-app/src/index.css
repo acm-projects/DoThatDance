@@ -266,7 +266,7 @@ input {
 
 .iconGradient {
   background: rgb(11, 11, 254);
-  background: linear-gradient(110deg, rgba(11, 11, 254, 0.350095413165266) 0%, rgba(255, 62, 224, 0.5057536764705883) 63%, rgba(255, 10, 63, 0.209171043417367) 83%, rgba(255, 2, 16, 0.20115983893557425) 91%, rgba(238, 164, 38, 0.20314863445378152) 100%);
+  background: linear-gradient(110deg, rgba(11, 11, 254, 0.300095413165266) 0%, rgba(255, 62, 224, 0.6057536764705883) 63%, rgba(255, 10, 63, 0.209171043417367) 83%, rgba(255, 2, 16, 0.20115983893557425) 91%, rgba(238, 164, 38, 0.90314863445378152) 100%);
   width: 160px;
   height: 160px;
   border-radius: 50%;
@@ -360,6 +360,17 @@ section {
   animation: fade 0.2s ease-in;
 }
 
+.element-to-fade-out {
+  opacity: 1;
+  transition: opacity 1s ease;
+  /* You can adjust the duration and timing function as needed */
+}
+
+.element-to-fade-out.fade-out {
+  opacity: 0;
+}
+
+
 @keyframes fade {
   0% {
     opacity: 0;
@@ -443,4 +454,76 @@ section {
 
 .dropdown:hover .dropdown-menu {
   display: block;
+}
+
+.element-to-fade-out {
+  opacity: 1;
+  transition: opacity 1s ease;
+  /* You can adjust the duration and timing function as needed */
+}
+
+.element-to-fade-out.fade-out {
+  opacity: 0;
+}
+
+/* .cta-btn {
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+  padding: 12px 21px;
+  font-family: Montserrat;
+  transition: box-shadow.3s ease-in-out;
+  text-decoration: none;
+} */
+
+/* These are the two backgrounds, absolutely positioned to cover. */
+/* .cta-btn::before,
+.cta-btn::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(to right, #2ab3ff, #ff2d00);
+  z-index: -1;
+}
+
+.cta-btn::after {
+  opacity: 0;
+  background-image: linear-gradient(to right, #FF2A67, #FF5D3A);
+  transition: opacity.3s ease-in-out;
+}
+
+
+.cta-btn:hover::after {
+  opacity: 1;
+} */
+
+.button-transition {
+  transition: all ease 0.5s;
+  cursor: pointer;
+  border: none;
+  background-image: linear-gradient(to left, rgba(11, 11, 254, 0.650095413165266), rgba(255, 2, 16, 0.20115983893557425), rgba(255, 62, 224, 0.5), rgba(65, 0, 251, 0.55));
+  background-size: 300%;
+}
+
+.button-transition:hover {
+  background-position: 100% 0;
+  transform: scale(1.05);
+}
+
+.fade-out-div {
+  transition: opacity 0.1s ease-in-out;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  /* Disable interactions on hidden element */
 }
