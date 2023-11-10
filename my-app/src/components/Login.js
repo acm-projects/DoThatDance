@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { SAMLAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
 import {RiUser6Line} from "react-icons/ri";
+
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const onLogin = (e) => {
     e.preventDefault();
@@ -30,13 +31,13 @@ const Login = () => {
        <nav className="nav">
         <ul>
           <li>
-            <a href="/">Home</a>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li className="active">
-            <a href="/Login">Login</a>
+            <NavLink to="/Login">Login</NavLink>
           </li>
           <li>
-            <a href="/register">Sign Up</a>
+            <NavLink to="/register">Sign Up</NavLink>
           </li>
         </ul>
       </nav>

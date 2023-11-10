@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
@@ -10,17 +10,30 @@ const Register = () => {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState("");
+  const [matchPassword, setMatchPassword] = useState("");
+  const [validMatch, setValidMatch] = useState(false);
 
   const usersCollectionRef = collection(db, "users");
 
+  useEffect(() => {
+    const match = password === matchPassword;
+    setValidMatch(match);
+  }, [password, matchPassword])
+
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    if(!validMatch) {
+      console.log("Passwords do not match.");
+      alert("Temporary Message: Passwords do not match!");
+      return;
+    }
 
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        setDoc(doc(db, "users", user.uid), {email: user.email, history: []});
+        setDoc(doc(db, "users", user.uid), {email: user.email, history: [], favorites: []});
         console.log(user);
         console.log(user.email);
         console.log("Registration Successful");
@@ -79,9 +92,9 @@ const Register = () => {
                 <label htmlFor="reconfirm">Reconfirm Password</label>
                 <input
                   type="password"
-                  label="Create password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  label="Confirm password"
+                  value={matchPassword}
+                  onChange={(e) => setMatchPassword(e.target.value)}
                   required
                   // placeholder="Reconfirm Password"
                 />

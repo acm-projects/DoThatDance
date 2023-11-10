@@ -11,6 +11,12 @@ const Home = () => {
 
   const navigate = useNavigate();
   const user = auth.currentUser;
+  if(user) {
+    console.log("Logged in");
+    console.log(user.email);
+  } else {
+    console.log("Not logged in");
+  }
 
 
   const handleLogout = async () => {
@@ -28,21 +34,31 @@ const Home = () => {
 
   const handleYoutubeLink = async (id, link) => {
       inputRef.current.value = "";
-      if(link == null) {
+      if(!link.includes("youtube.com/watch")) {
+        alert("Error! Enter a youtube link!");
+        console.log("Link does not include youtube.com/watch");
         console.log("Please enter a Youtube Link");
-      } else if(auth.currentUser) {
+      } else if(user) {
         // retrieve existing history
         const userRef = doc(db, "users", id);
         const userDoc = await getDoc(userRef);
         const history = userDoc.data().history;
 
-        // Add Youtube Link to database
+        if(history.includes(link)) {
+          console.log(history);
+          console.log("This video is already in your history!");
+        } else {
+          // Add Youtube Link to database
         await updateDoc(doc(db, "users", id), { history: [...history, link] });
+
+        console.log("Youtube Link Added Successfully!");
+        }
       }
   }
 
   const userNotLoggedIn = () => {
       // Temporary message, need to replace later with actual action
+      alert("You are not logged in!");
       console.log("Please login to add Youtube Link");
   }
 
