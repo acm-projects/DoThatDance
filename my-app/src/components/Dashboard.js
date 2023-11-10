@@ -3,6 +3,8 @@ import { db, auth } from "../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
 import { doc, updateDoc, getDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { onAuthStateChanged } from 'firebase/auth';
+import "../DashboardPage.css"
+import Authentication from './Authentication';
 
 const Dashboard = () => {
     const apiKey = process.env.REACT_APP_API_KEY;
@@ -98,8 +100,65 @@ useEffect(() => {
 
     return (
     <div>
+        <nav className="nav">
+        <ul>
+          <li className="active">
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <Authentication />
+        </ul>
+        </nav>
+        <div className="dashboard-container">
+            <div className="watched-videos">
+            <h2>History</h2>
+            <div style={{ overflowY: 'auto'}}>
+            {watchHistory && watchHistory.length > 0 ? 
+            watchHistory.map((video, index) => {
+                    return (
+                        <div key = {index} >
+                            <img src={handleYouTubeThumbnail(video)} style={{ width: '350px', height: '300px'}} />
+                            <h2>{videoTitles[video]}</h2>
+                            {favorites.includes(video) ? null : (
+                                <button onClick={() => handleFavorites(video)}>
+                                Favorite
+                            </button>
+                            )}
+                        </div>
+                    )
+                
+            })
+            : (
+                <h2>You have no videos watched!</h2>
+            )}
+            </div>
 
-        {/* Div for history */}
+            </div>
+
+            <div className="starred-videos">
+            <h2>Favorites</h2>
+            <div style={{ overflowY: 'auto'}}>
+            {favorites && favorites.length > 0 ? 
+                    favorites.map((video, index) => {
+                            return (
+                                <div key = {index}>
+                                    <img src={handleYouTubeThumbnail(video)} style={{ width: '350px', height: '300px' }} />
+                                    <h2>{videoTitles[video]}</h2>
+                                    <button onClick={() => handleFavorites(video)}>
+                                        Unfavorite
+                                    </button>
+                                </div>
+                            )
+                    })
+                : (
+                    <h2>
+                        You haven't favorited any videos!
+                    </h2>
+                )}
+            </div>
+            </div>
+        </div>
+                
+        {/*         
         <div className="container1">
           <div className ="formDiv changePadding">
             <h1>History</h1>
@@ -128,7 +187,6 @@ useEffect(() => {
       </div>
 
 
-        {/* Div for favorites */}
         <div className="container1">
           <div className ="formDiv changePadding">
             <h1>Favorites</h1>
@@ -153,7 +211,7 @@ useEffect(() => {
             </div>
           </div>
       </div>
-
+            */}        
     </div>
   )
 }

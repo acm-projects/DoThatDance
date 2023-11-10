@@ -4,6 +4,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { db } from "../firebase";
 import { collection, setDoc, doc } from "firebase/firestore";
+import { Link } from 'react-router-dom';
+import Authentication from "./Authentication";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -49,21 +51,16 @@ const Register = () => {
   };
 
   return (
-      <>
-          <nav className="nav">
+    <>
+      <nav className="nav">
         <ul>
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          <li>
-            <NavLink to="/login">Login</NavLink>
-          </li>
-          <li className="active">
-            <NavLink to="/register">Sign Up</NavLink>
-          </li>
+          <Authentication />
         </ul>
       </nav>
-      <div className="container1">
+      <div className="container1 fade-in">
           <div className ="formDiv changePadding">
             <form>
               <div className="input">
@@ -110,8 +107,9 @@ const Register = () => {
             </p>
           </div>
       </div>
-      </>
+    </>
   );
 };
+
 
 export default Register;
