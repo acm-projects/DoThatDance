@@ -85,12 +85,15 @@ useEffect(() => {
     }
 
     const handleYoutubeTitle = async (video) => {
+        console.log("video: ");
+        console.log(video);
         let videoId = video.split("?v=")[1];
+        console.log(videoId);
         try {
             const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apiKey}&part=snippet`);
             const data = await response.json();
             const title = data.items[0].snippet.title;
-            console.log(title);
+            console.log("title: " + title);
             return title;
         } catch (error) {
             console.error('Error:', error);
