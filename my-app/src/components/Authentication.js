@@ -63,7 +63,7 @@ const Authentication = () => {
                         {isOpen && (
                             <ul className="dropdown-menu">
                                 <li className={isActive('/register')}>
-                                    <NavLink to="/dashboard">Dashboard</NavLink>
+                                    <NavLink to="/dashboardpage">Dashboard</NavLink>
                                 </li>
                                 <li>
                                     <NavLink onClick={userSignOut} to="/">Sign Out</NavLink>

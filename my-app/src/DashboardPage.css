@@ -1,23 +1,24 @@
 .dashboard-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Align items to the start of the container */
   height: 90vh;
+  margin-top: 60px; /* Adjust the top margin as needed */
+}
+
+.video-container {
+  width: 600px;
+  margin: 20px;
 }
 
 .watched-videos,
 .starred-videos {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 600px;
-  height: 600px; /* Adjust the height to make the rectangles longer */
-  border: none;
-  margin: 200px 20px 20px 20px;
-  background-color: rgba(123, 121, 121, 0.5);
+  background-color: rgba(65, 0, 251, 0.3);
   padding: 20px;
-  border-radius: 10px; /* Adding rounded corners */
+  border-radius: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 660px;
 }
 
 .watched-videos h2,
@@ -25,4 +26,29 @@
   color: white;
   margin: 0;
   font-weight: normal;
+}
+
+.search-container {
+  position: relative;
+  top: 17px;
+  left: 250px; /* Adjust the left position as needed */
+  margin-top: -50px; /* Adjust the negative margin to move it up */
+}
+
+.search-container input {
+  height: 10px;
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.76);
+}
+
+.search-button {
+  position: relative;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
 }
