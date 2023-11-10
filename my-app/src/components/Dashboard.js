@@ -123,7 +123,7 @@ useEffect(() => {
                         <div key = {index} >
                             <img src={handleYouTubeThumbnail(video)}/>
                             <h2>{videoTitles[video]}</h2>
-                            {favorites.includes(video) ? null : (
+                            {favorites && favorites.includes(video) ? null : (
                                 <button onClick={() => handleFavorites(video)}>
                                 Favorite
                             </button>
@@ -225,4 +225,4 @@ useEffect(() => {
   )
 }
 
-export default Dashboard
+export default Dashboard;

@@ -505,7 +505,7 @@ section {
   transition: all ease 0.5s;
   cursor: pointer;
   border: none;
-  background-image: linear-gradient(to left, rgba(11, 11, 254, 0.650095413165266), rgba(255, 2, 16, 0.20115983893557425), rgba(255, 62, 224, 0.5), rgba(65, 0, 251, 0.55));
+  background-image: linear-gradient(to left, rgba(11, 11, 254, 0.650095413165266), rgba(255, 2, 16, 0.20115983893557425), rgba(255, 62, 224, 0.6), rgba(65, 0, 251, 0.55));
   background-size: 300%;
 }
 
