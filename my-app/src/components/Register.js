@@ -97,7 +97,7 @@ const Register = () => {
                 />
               </div>
               <div class="centerButton">
-                <button className="login" type="submit" onClick={onSubmit}>
+                <button className="login button-transition" type="submit" onClick={onSubmit}>
                   Sign up
                 </button>
               </div>

@@ -4,9 +4,14 @@ import { db, auth } from "../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
 import pngeggnew from '../pngeggnew.png';
-import { useSpring } from 'react-spring';
+
 import Authentication from "./Authentication";
+
+
+
 const Home = () => {
+
+
 
   const [videoLink, setVideoLink] = useState("");
   const inputRef = useRef(null);
@@ -19,6 +24,7 @@ const Home = () => {
   } else {
     console.log("Not logged in");
   }
+
 
 
   const [isHovered, setIsHovered] = useState(false);
@@ -34,22 +40,20 @@ const Home = () => {
   };
 
 
-  const buttonStyle = {
-    transform: isHovered ? 'scale(1.01)' : 'scale(1)',
-    backgroundColor: isHovered ? 'rgba(65, 0, 210, .60)' : 'rgba(65, 0, 251, 0.55)',
-    transition: 'transform 0.3s ease',
-  };
-
   const [isHoveredLink, setIsHoveredLink] = useState(false);
   const handleHoverLink = () => {
     setIsHoveredLink(!isHoveredLink);
   };
-  const buttonStyleLink = {
-    transform: isHoveredLink ? 'scale(1.005)' : 'scale(1)',
-    transition: 'transform 0.3s ease',
+
+  const handleNavigate = () => {
+    // Apply a class or perform other actions
+    // ...
+
+    // Wait for 2 seconds before navigating to another page
+    setTimeout(() => {
+      navigate("/Video");
+    }, 500);
   };
-
-
 
   const handleLogout = async () => {
     signOut(auth)
@@ -62,8 +66,6 @@ const Home = () => {
         // An error happened.
         console.log(error);
       });
-
-
   };
 
   const handleYoutubeLink = async (id, link) => {
@@ -91,9 +93,10 @@ const Home = () => {
   }
 
   const userNotLoggedIn = () => {
-      // Temporary message, need to replace later with actual action
-      alert("You are not logged in!");
-      console.log("Please login to add Youtube Link");
+      // Transition and Navigate to video page
+      handleClick();
+      handleNavigate();
+      console.log("Navigating to video page.");
   }
 
   return (
@@ -106,7 +109,7 @@ const Home = () => {
           <Authentication />
         </ul>
       </nav>
-      <img className="design fade-in" src={pngeggnew} />
+      <img className={isActive ? "design fade-in hidden fade-out-div" : "design fade-in visible fade-out-div"} src={pngeggnew} />
       <div className={isActive ? 'slideTitle body' : 'body fade-in'}>
         <div className="container">
           <h1>Welcome to DoThatDance!</h1>
@@ -123,11 +126,11 @@ const Home = () => {
             />
             <div>
               <div className="goDiv">
-                <button style={buttonStyle}
-                  className="go"
+                <button
+                  className="go button-transition"
                   onMouseEnter={handleHover}
                   onMouseLeave={handleHover}
-                  onClick={!user ? userNotLoggedIn : () => { handleYoutubeLink(user.uid, videoLink); handleClick() }}>
+                  onClick={!user ? userNotLoggedIn : () => { handleYoutubeLink(user.uid, videoLink); handleClick(); handleNavigate() }}>
                   Go
                 </button>
               </div>

@@ -5,6 +5,7 @@ import { doc, updateDoc, getDoc, arrayUnion, arrayRemove } from "firebase/firest
 import { onAuthStateChanged } from 'firebase/auth';
 import "../DashboardPage.css"
 import Authentication from './Authentication';
+import searchIcon from "../images/search.png";
 
 const Dashboard = () => {
     const apiKey = process.env.REACT_APP_API_KEY;
@@ -109,14 +110,18 @@ useEffect(() => {
         </ul>
         </nav>
         <div className="dashboard-container">
-            <div className="watched-videos">
+            <div className="video-container watched-videos">
             <h2>History</h2>
-            <div style={{ overflowY: 'auto'}}>
+            <div className="search-container">
+                <input type="text" placeholder="Search" />
+                <img src={searchIcon} alt="" className="search-button" />
+            </div>
+            <div>
             {watchHistory && watchHistory.length > 0 ? 
             watchHistory.map((video, index) => {
                     return (
                         <div key = {index} >
-                            <img src={handleYouTubeThumbnail(video)} style={{ width: '350px', height: '300px'}} />
+                            <img src={handleYouTubeThumbnail(video)}/>
                             <h2>{videoTitles[video]}</h2>
                             {favorites.includes(video) ? null : (
                                 <button onClick={() => handleFavorites(video)}>
@@ -134,14 +139,18 @@ useEffect(() => {
 
             </div>
 
-            <div className="starred-videos">
+            <div className="video-container starred-videos">
             <h2>Favorites</h2>
-            <div style={{ overflowY: 'auto'}}>
+            <div className="search-container">
+                <input type="text" placeholder="Search" />
+                <img src={searchIcon} alt="" className="search-button" />
+            </div>
+            <div>
             {favorites && favorites.length > 0 ? 
                     favorites.map((video, index) => {
                             return (
                                 <div key = {index}>
-                                    <img src={handleYouTubeThumbnail(video)} style={{ width: '350px', height: '300px' }} />
+                                    <img src={handleYouTubeThumbnail(video)}/>
                                     <h2>{videoTitles[video]}</h2>
                                     <button onClick={() => handleFavorites(video)}>
                                         Unfavorite
