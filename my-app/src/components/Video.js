@@ -1,9 +1,9 @@
-import React, {Component, useState} from 'react';
-import './index.css';
-import './components/videojs.css';
+/*import React, {Component, useState} from 'react';
+import '../index.css';
+import './videojs.css';
 import videojs from 'video.js';
 import "videojs-youtube";
-import PlaybackRateButton from './components/PlaybackRateButton';
+import PlaybackRateButton from './PlaybackRateButton';
 
 class VideoJSPlayerComponent extends Component {
 
@@ -169,3 +169,4 @@ class VideoJSPlayerComponent extends Component {
 }
 
 export default VideoJSPlayerComponent;
+*/

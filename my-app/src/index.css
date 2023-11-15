@@ -527,3 +527,7 @@ section {
   pointer-events: none;
   /* Disable interactions on hidden element */
 }
+
+.d-flex {
+  z-index: 1;
+}

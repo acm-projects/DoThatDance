@@ -18,6 +18,7 @@ const Home = () => {
 
   const navigate = useNavigate();
   const user = auth.currentUser;
+
   if(user) {
     console.log("Logged in");
     console.log(user.email);
@@ -50,9 +51,9 @@ const Home = () => {
     // ...
 
     // Wait for 2 seconds before navigating to another page
-    setTimeout(() => {
+    /*setTimeout(() => {
       navigate("/Video");
-    }, 500);
+    }, 500);*/
   };
 
   const handleLogout = async () => {
@@ -70,7 +71,7 @@ const Home = () => {
 
   const handleYoutubeLink = async (id, link) => {
       inputRef.current.value = "";
-      if(!link.includes("youtube.com/watch")) {
+      if(!link.includes("youtube.com/watch?v=")) {
         alert("Error! Enter a youtube link!");
         console.log("Link does not include youtube.com/watch");
         console.log("Please enter a Youtube Link");
@@ -79,6 +80,8 @@ const Home = () => {
         const userRef = doc(db, "users", id);
         const userDoc = await getDoc(userRef);
         const history = userDoc.data().history;
+        setVideoLink(link);
+        navigate(`/video/${encodeURIComponent(link)}`);
 
         if(history.includes(link)) {
           console.log(history);
@@ -131,7 +134,9 @@ const Home = () => {
                   onMouseEnter={handleHover}
                   onMouseLeave={handleHover}
                   onClick={!user ? userNotLoggedIn : () => { handleYoutubeLink(user.uid, videoLink); handleClick(); handleNavigate() }}>
-                  Go
+                  <li>
+                    <NavLink to="/video">Go</NavLink>
+                  </li>
                 </button>
               </div>
             </div>
