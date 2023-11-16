@@ -31,7 +31,7 @@ class VideoJSPlayerComponent extends Component {
             playedSeconds: 0,
             remainingVideoPlay: 0,
             totalDuration: 0,
-
+            
         };
         
     }

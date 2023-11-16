@@ -15,6 +15,9 @@ const Dashboard = () => {
     const [favorites, setFavorites] = useState([]);
     const [user, setUser] = useState(null);
     const [videoTitles, setVideoTitles] = useState({});
+    const [searchTitle, setSearchTitle] = useState("");
+    const [searchFavorites, setSearchFavorites] = useState("");
+
     
     
 
@@ -116,16 +119,24 @@ useEffect(() => {
             <div className="video-container watched-videos">
             <h2>History</h2>
             <div className="search-container">
-                <input type="text" placeholder="Search" />
+                <input type="text" placeholder="Search" onChange={e => {setSearchTitle(e.target.value)}} />
                 <img src={searchIcon} alt="" className="search-button" />
             </div>
             <div>
             {watchHistory && watchHistory.length > 0 ? 
-            watchHistory.map((video, index) => {
+            watchHistory.filter((video) => {
+                if(searchTitle == "") {
+                    return video;
+                } else if(videoTitles[video].toLowerCase().includes(searchTitle.toLowerCase())) {
+                    return video;
+                }
+            }).toReversed().map((video, index) => {
                     return (
                         <div key = {index} >
-                            <img src={handleYouTubeThumbnail(video)}/>
-                            <h2>{videoTitles[video]}</h2>
+                            <NavLink to ={"/video/:" + video} > {/* need to update later */}
+                                <img src={handleYouTubeThumbnail(video)}/>
+                                <h2>{videoTitles[video]}</h2>
+                            </NavLink>
                             {favorites && favorites.includes(video) ? null : (
                                 <button onClick={() => handleFavorites(video)}>
                                 Favorite
@@ -145,16 +156,24 @@ useEffect(() => {
             <div className="video-container starred-videos">
             <h2>Favorites</h2>
             <div className="search-container">
-                <input type="text" placeholder="Search" />
+                <input type="text" placeholder="Search" onChange={e => {setSearchFavorites(e.target.value)}} />
                 <img src={searchIcon} alt="" className="search-button" />
             </div>
             <div>
             {favorites && favorites.length > 0 ? 
-                    favorites.map((video, index) => {
+                    favorites.filter((video) => {
+                        if(searchFavorites == "") {
+                            return video;
+                        } else if(videoTitles[video].toLowerCase().includes(searchFavorites.toLowerCase())) {
+                            return video;
+                        }
+                    }).toReversed().map((video, index) => {
                             return (
                                 <div key = {index}>
-                                    <img src={handleYouTubeThumbnail(video)}/>
-                                    <h2>{videoTitles[video]}</h2>
+                                    <NavLink to ={"/video/:" + video} > {/* need to update later */}
+                                        <img src={handleYouTubeThumbnail(video)}/>
+                                        <h2>{videoTitles[video]}</h2>
+                                    </NavLink>
                                     <button onClick={() => handleFavorites(video)}>
                                         Unfavorite
                                     </button>
