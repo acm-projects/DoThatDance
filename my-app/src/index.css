@@ -531,3 +531,12 @@ section {
 .d-flex {
   z-index: 1;
 }
+
+.noList {
+  list-style: none;
+}
+
+.noUnderline {
+  text-decoration: none;
+}
+

@@ -134,8 +134,8 @@ const Home = () => {
                   onMouseEnter={handleHover}
                   onMouseLeave={handleHover}
                   onClick={!user ? userNotLoggedIn : () => { handleYoutubeLink(user.uid, videoLink); handleClick(); handleNavigate() }}>
-                  <li>
-                    <NavLink to="/video">Go</NavLink>
+                  <li className="noList">
+                    <NavLink className="noUnderline" to="/video">Go</NavLink>
                   </li>
                 </button>
               </div>

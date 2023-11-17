@@ -46,14 +46,11 @@ const Login = () => {
     <>
       <nav className="nav">
         <ul>
-          <li className="active">
+          <li>
             <NavLink to="/">Home</NavLink>
           </li>
           <Authentication />
         </ul>
-        { /*<div>
-          <button onClick={handleLogout}>Logout</button>
-          </div> */}
       </nav>
       <div className="container1 fade-in">
         <div className="iconGradient"></div>

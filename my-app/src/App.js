@@ -19,12 +19,9 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/video/:videoURL" element={<VideoPlayerPage />} />
-            
             <Route element={<ProtectedRoute />}>
               <Route path="/dashboard" element={<Dashboard />} />
             </Route>
-            
-            
           </Routes>
         </section>
       </div>
