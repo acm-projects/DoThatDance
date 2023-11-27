@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import './index.css';
 import './components/videojs.css';
 import videojs from 'video.js';
@@ -6,7 +6,6 @@ import "videojs-youtube";
 import PlaybackRateButton from './components/PlaybackRateButton';
 
 class VideoJSPlayerComponent extends Component {
-
   player;
   videoNode;
   videoJsOptions = {
@@ -33,11 +32,9 @@ class VideoJSPlayerComponent extends Component {
       totalDuration: 0,
       playButtonIcon: 'play.png',
       mirrorButtonIcon: 'mirror.png',
+      isSpeedPopupOpen: false,
     };
-
   }
-
-
 
   play = () => {
     if (this.player) {
@@ -68,7 +65,7 @@ class VideoJSPlayerComponent extends Component {
       this.player.currentTime(30);
     }
   }
-  
+
   togglePlay = () => {
     if (this.state.isPlaying) {
       this.pause();
@@ -83,12 +80,10 @@ class VideoJSPlayerComponent extends Component {
   }
 
   toggleMirror = () => {
-    // Toggle mirror button icon
     this.setState((prevState) => ({
       mirrorButtonIcon: prevState.mirrorButtonIcon === 'mirror.png' ? 'newmirror.png' : 'mirror.png',
     }));
-    
-    // Your existing mirrorVideo logic
+
     const video = document.getElementById('video');
     video.style.transform = video.style.transform === 'scaleX(-1)' ? '' : 'scaleX(-1)';
   }
@@ -96,52 +91,48 @@ class VideoJSPlayerComponent extends Component {
   handlePlaybackRateChange = (newPlaybackRate) => {
     if (this.player) {
       this.player.playbackRate(newPlaybackRate);
+      this.setState({ playbackSpeed: newPlaybackRate });
     }
   };
 
-  handlePlaybackSpeedSelect = (speed) => {
-    this.handlePlaybackRateChange(speed);
+  toggleSpeedPopup = () => {
+    this.setState((prevState) => ({
+      isSpeedPopupOpen: !prevState.isSpeedPopupOpen,
+    }));
   };
 
+  handleSpeedItemClick = (speed) => {
+    this.handlePlaybackRateChange(speed);
+    this.toggleSpeedPopup();
+  };
 
   componentDidMount() {
     this.player = videojs(this.videoNode, this.videoJsOptions, () => {
       if (this.player) {
-
-        // Triggered
-        console.log('onPlayerReady');
-        console.log("videojs url: ", this.props.videoURL);
-
-        this.player.on('play', (event) => {
+        this.player.on('play', () => {
           this.setState({
             isPlaying: true,
           })
-        })
-        this.player.on('loadedmetadata', (event) => {
-          // @ts-ignore
+        });
+        this.player.on('loadedmetadata', () => {
           this.setState({ totalDuration: this.player.duration() })
-        })
-        this.player.on('pause', (event) => {
+        });
+        this.player.on('pause', () => {
           this.setState({
             isPlaying: false,
           })
-        })
-        this.player.on('ended', (event) => {
+        });
+        this.player.on('ended', () => {
           console.log("ended")
-        })
-        this.player.on('timeupdate', (event) => {
-          // @ts-ignore
+        });
+        this.player.on('timeupdate', () => {
           this.setState({ playedSeconds: this.player.currentTime() })
-          // @ts-ignore
           this.setState({ remainingVideoPlay: this.player.remainingTime() })
         });
       }
     });
   }
 
-
-
-  // destroy player on unmount
   componentWillUnmount() {
     if (this.player) {
       this.player.dispose();
@@ -158,9 +149,13 @@ class VideoJSPlayerComponent extends Component {
       .join(":")
   };
 
-
   render() {
-    const { isPlaying, playButtonIcon, mirrorButtonIcon } = this.state;
+    const {
+      isPlaying,
+      playButtonIcon,
+      mirrorButtonIcon,
+      isSpeedPopupOpen,
+    } = this.state;
 
     return (
       <div className="customVideoPlayer">
@@ -182,10 +177,42 @@ class VideoJSPlayerComponent extends Component {
               className="mirror-button-img"
             />
           </div>
-          <PlaybackRateButton playbackRate={0.5} onClick={this.handlePlaybackRateChange} />
-          <PlaybackRateButton playbackRate={0.75} onClick={this.handlePlaybackRateChange} />
-          <PlaybackRateButton playbackRate={1.0} onClick={this.handlePlaybackRateChange} />
-          <PlaybackRateButton playbackRate={2.0} onClick={this.handlePlaybackRateChange} />
+          <div className="speed-button" onClick={this.toggleSpeedPopup}>
+            <img
+              src={require('./images/playback.png')}
+              alt="Speed Button"
+              className="speed-button-img"
+              style={{ width: '30px', height: '30px', maxWidth: '30px', maxHeight: '30px' }}
+            />
+            {isSpeedPopupOpen && (
+              <div className="speed-popup">
+                <div
+                  className="speed-popup-item"
+                  onClick={() => this.handleSpeedItemClick(0.5)}
+                >
+                  0.5x
+                </div>
+                <div
+                  className="speed-popup-item"
+                  onClick={() => this.handleSpeedItemClick(0.75)}
+                >
+                  0.75x
+                </div>
+                <div
+                  className="speed-popup-item"
+                  onClick={() => this.handleSpeedItemClick(1.0)}
+                >
+                  1x
+                </div>
+                <div
+                  className="speed-popup-item"
+                  onClick={() => this.handleSpeedItemClick(2.0)}
+                >
+                  2x
+                </div>
+              </div>
+            )}
+          </div>
         </div>
         <div className="rectangle"></div>
       </div>
