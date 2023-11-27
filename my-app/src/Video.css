@@ -75,14 +75,14 @@
   height: 30px; 
   z-index: 1; 
   cursor: pointer;
-  filter:brightness(0) invert(1);
 }
 
-.newplay-button {
+.play-button-img {
   width: 100%;
   height: 100%;
-  filter:brightness(0) invert(1);
+  filter: brightness(0) invert(1);
 }
+
 
 .volume-button {
   position: absolute;

@@ -31,7 +31,8 @@ class VideoJSPlayerComponent extends Component {
       playedSeconds: 0,
       remainingVideoPlay: 0,
       totalDuration: 0,
-
+      playButtonIcon: 'play.png',
+      mirrorButtonIcon: 'mirror.png',
     };
 
   }
@@ -67,27 +68,40 @@ class VideoJSPlayerComponent extends Component {
       this.player.currentTime(30);
     }
   }
-
+  
   togglePlay = () => {
     if (this.state.isPlaying) {
       this.pause();
     } else {
       this.play();
     }
+
+    // Toggle play button icon
+    this.setState((prevState) => ({
+      playButtonIcon: prevState.playButtonIcon === 'play.png' ? 'newplay.png' : 'play.png',
+    }));
   }
 
-  mirrorVideo = () => {
+  toggleMirror = () => {
+    // Toggle mirror button icon
+    this.setState((prevState) => ({
+      mirrorButtonIcon: prevState.mirrorButtonIcon === 'mirror.png' ? 'newmirror.png' : 'mirror.png',
+    }));
+    
+    // Your existing mirrorVideo logic
     const video = document.getElementById('video');
-    video.style.transform = 'scaleX(-1)';
+    video.style.transform = video.style.transform === 'scaleX(-1)' ? '' : 'scaleX(-1)';
   }
 
   handlePlaybackRateChange = (newPlaybackRate) => {
     if (this.player) {
       this.player.playbackRate(newPlaybackRate);
     }
-  }
+  };
 
-
+  handlePlaybackSpeedSelect = (speed) => {
+    this.handlePlaybackRateChange(speed);
+  };
 
 
   componentDidMount() {
@@ -120,7 +134,7 @@ class VideoJSPlayerComponent extends Component {
           this.setState({ playedSeconds: this.player.currentTime() })
           // @ts-ignore
           this.setState({ remainingVideoPlay: this.player.remainingTime() })
-        })
+        });
       }
     });
   }
@@ -146,23 +160,34 @@ class VideoJSPlayerComponent extends Component {
 
 
   render() {
-    const { isPlaying } = this.state;
+    const { isPlaying, playButtonIcon, mirrorButtonIcon } = this.state;
 
     return (
       <div className="customVideoPlayer">
         <div className="playerWrapper" data-vjs-player>
-          <video id='video' ref={node => (this.videoNode = node)} className="video-js" />
+          <video id="video" ref={(node) => (this.videoNode = node)} className="video-js" />
         </div>
-        <hr />
-        <br />
         <div className="d-flex">
-          <button className="btn btn-danger btn-sm" onClick={this.togglePlay}>{isPlaying ? "Pause" : "Play"}</button>&nbsp;
-          <button className="btn btn-danger btn-sm" onClick={this.mirrorVideo}>Mirror</button>
+          <div className="play-button" onClick={this.togglePlay}>
+            <img
+              src={require(`./images/${playButtonIcon}`)}
+              alt="Play Button"
+              className="play-button-img"
+            />
+          </div>
+          <div className="mirror-button" onClick={this.toggleMirror}>
+            <img
+              src={require(`./images/${mirrorButtonIcon}`)}
+              alt="Mirror Button"
+              className="mirror-button-img"
+            />
+          </div>
           <PlaybackRateButton playbackRate={0.5} onClick={this.handlePlaybackRateChange} />
           <PlaybackRateButton playbackRate={0.75} onClick={this.handlePlaybackRateChange} />
           <PlaybackRateButton playbackRate={1.0} onClick={this.handlePlaybackRateChange} />
           <PlaybackRateButton playbackRate={2.0} onClick={this.handlePlaybackRateChange} />
         </div>
+        <div className="rectangle"></div>
       </div>
     );
   }
