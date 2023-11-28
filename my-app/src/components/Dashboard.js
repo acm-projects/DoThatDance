@@ -138,7 +138,7 @@ const Dashboard = () => {
                             }).toReversed().map((video, index) => {
                                 return (
                                     <div className="specificVid" key={index} >
-                                        <NavLink className="noUnderline" to={"/video/:" + video} > {/* need to update later */}
+                                        <NavLink className="noUnderline" to={`/video/${encodeURIComponent(video)}`} >
                                             <img className="dashboardPic" src={handleYouTubeThumbnail(video)} />
                                             <h2 className=" noUnderline title">{videoTitles[video]}</h2>
                                         </NavLink>
@@ -177,7 +177,7 @@ const Dashboard = () => {
                             }).toReversed().map((video, index) => {
                                 return (
                                     <div className="specificVid" key={index}>
-                                        <NavLink className="noUnderline" to={"/video/:" + video} > {/* need to update later */}
+                                        <NavLink className="noUnderline" to={`/video/${encodeURIComponent(video)}`} >
                                             <img className="dashboardPic" src={handleYouTubeThumbnail(video)} />
                                             <h2 className="title">{videoTitles[video]}</h2>
                                         </NavLink>
